@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>qq</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            list-style-type: none;
+            text-decoration: none;
+        }
+        input{
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <input class="login_name" type="text" name="" id="" placeholder="QQ号/邮箱/手机号">
+    <input class="login_num" type="text" name="" id="" placeholder="密码">
+    <input class="login_btn" type="button" value="登录">
+    
+    <input class="zhuce_name" type="text" name="" id="" placeholder="QQ号/邮箱/手机号">
+    <input class="zhuce_num" type="text" name="" id="" placeholder="密码">
+    <input class="zhuce_btn" type="button" value="注册">
+</body>
+<script>
+    let $=e=>document.querySelector(e)
+    $(".login_btn").onclick=function(){
+        let name=$(".login_name").value
+        let num=$(".login_num").value
+        fetch(`http://127.0.0.1:5000/login?username=${name}&password=${num}`)
+        .then(r=>r.json())
+        .then(e=>{
+            if(e.code==200){
+                localStorage.setItem("login",1)
+                localStorage.setItem("login_name",name)
+
+                let strIndex=location.href.lastIndexOf("/")
+                let str=location.href.slice(0,strIndex)
+                location.replace(str+"/index.html")
+            }
+            else{
+                alert("账户被冻结")
+            }
+        })
+    }
+    $(".zhuce_btn").onclick=function(){
+        let name=$(".zhuce_name").value
+        let num=$(".zhuce_num").value
+        fetch(`http://127.0.0.1:5000/register?username=${name}&password=${num}`)
+        .then(e=>e.json())
+        .then(e=>{
+            if(e.code==200){
+                localStorage.setItem("login",1)
+                localStorage.setItem("login_name",name)
+
+                let strIndex=location.href.lastIndexOf("/")
+                let str=location.href.slice(0,strIndex)
+                location.replace(str+"/index.html")
+            }else{
+                alert("该账户名已存在")
+            }
+        })
+    }
+</script>
+</html>

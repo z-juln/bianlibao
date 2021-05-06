@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>shoppingcar</title>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        *{padding: 0px;margin: 0px;list-style: none;text-decoration: none;}
+
+        .header{color:white;width:100%;height:50px;background: red;display: flex;}
+        .header>.back{width: 40%;height:50px;text-indent: 0.5rem;font-size: 35px;line-height: 50px;}
+        .header>.title{width:20%;text-align: center;height:50px;font-size: 25px;line-height: 50px;}
+        .header>.wancheng{width:30%;height:50px;font-size: 16px;line-height: 50px;text-align: center;}
+        .header>i{width:10%;height:50px;font-size: 25px;line-height: 50px;}
+
+        .checkbox{width:20px;height:20px;box-sizing: border-box;border:1px solid black;}
+
+        input[type='checkbox']{display: none;}
+
+        .bottom{position: fixed;bottom: 0;width:100%;height:50px;background: white;border-top:1px solid black;box-sizing: border-box;display: flex;}
+        .bottom>.left>.checkbox{transform: translate(5px,5px);display: inline-block;}
+        .bottom>.left{width:25%;height:50px;}
+        .bottom>.left>span{display: inline-block;width:4rem;height:30px;line-height: 50px;text-align: center;box-sizing: border-box;}
+        .bottom>.right{display: flex;width:75%;height: 50px;}
+        .bottom>.right>.price_all{width:60%;height: 50px;text-align: end;line-height: 50px;}
+        .bottom>.right>.price_all>span:nth-child(1){color: red;font-size: 20px;position: relative;left:-20px;}
+        .bottom>.right>.price_all>span:nth-child(2){position: relative;left:-10px;}
+        .bottom>.right>.go{width:40%;height: 50px;background: red;color:white;font-size: 20px;text-align: center;line-height: 50px;}
+
+        .body_body{width:100%;height:calc(100% - 100px);overflow: scroll;}
+        .body{width:100%;}
+        .body li{width:100%;height:100px;display: flex;}
+
+        .body .left{width:10%;height:100px;text-align: center;line-height: 100px;}
+        .body .checkbox{display: inline-block;}
+
+        .body a{width:65%;}
+        .body .center{width:100%;height:100px;display: flex;color:black;}
+        .body .center>img{width:70px;height: 70px;transform: translateY(15px);}
+        .body .txt{width:100%;height:100px;display: flex;flex-direction: column;justify-content: space-around;text-indent: 1rem;}
+
+        .body .right{width:25%;height:100px;display: flex;flex-direction: column;justify-content: space-around;}
+        .body .num_box{width:90%;height:30%;display: flex;}
+        .body .num_box .del,.num,.add{display: inline-block;width:33.3%;height:100%;box-sizing: border-box;border-radius: 1px;border:1px solid #ccc;background: #eee;text-align: center;}
+        .body .right p{color:red;width:100%;height:1rem;text-align: center;transform: translateX(-0.5rem);}
+    </style>
+</head>
+<body>
+    <script>
+        document.body.style.height=`${window.innerHeight}px`
+    </script>
+    <div class="header">
+        <div class="back">
+            <i class="fa fa-angle-left"></i>
+        </div>
+        <p class="title">购物车</p>
+        <p class="wancheng"><span>完成</span></p>
+        <i class="fa fa-commenting-o"></i>
+    </div>
+
+    <div class="bottom">
+        <div class="left">
+            <input type="checkbox" name="" id="">
+            <div class="checkbox"></div>
+            <span>全选</span>
+        </div>
+        <div class="right">
+            <div class="price_all">
+                <span>￥0.00</span>
+                <span>商品</span>
+            </div>
+            <div class="go">去结算(<span>0</span>)</div>
+        </div>
+    </div>
+
+    <div class="body_body">
+        <div class="body">
+            <div class="body_one">
+                <!-- ---------------- -->
+            </div>
+            <div class="_two">
+                <p>换购专区</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    let $=e=>document.querySelector(e)
+    let $$=e=>document.querySelectorAll(e)
+//username
+    let getusername=function(){
+        let username
+        let str=location.search.split("?")[1]
+        if(str.includes("&")){
+            username=str.split("&")[0].split("=")[1]
+        }
+        else{
+            username=str.split("=")[1]
+        }
+        return username
+    }
+    let username=getusername()
+//back
+    $(".header>.back").onclick=function(){
+        let strIndex=location.href.lastIndexOf("/")
+        let str=location.href.slice(0,strIndex)
+        location.replace(str+"/index.html?username="+username)
+    }
+//完成
+    $(".header>.wancheng>span").onclick=function(){
+        console.log("完成,未完成")
+    }
+
+//初始render
+    let render=function(){
+        fetch(`http://127.0.0.1:5000/username?username=${username}`).then(e=>e.json())
+        .then(e=>{
+            if(!e.data.shoppingcar){
+                $(".body").innerHTML=`
+                    <p style="width:100%;height:${window.innerHeight-200}px;line-height:${window.innerHeight-200}px;text-align:center;">
+                        亲，您的购物车尚未添加商品
+                    </p>
+                `
+            }
+            else{
+                let str=e.data.shoppingcar
+                let shoppingcar=str.split(";")
+                shoppingcar.pop()
+                console.log(shoppingcar)
+                let len=shoppingcar.length
+                $(".body .body_one").innerHTML=``
+                async function a(){
+                    for(let i=0;i<len;i++){
+                        let goods_name=shoppingcar[i].split("?")[0]
+                        let e=await fetch(`http://127.0.0.1:5000/goods?goods=${goods_name}`).then(e=>e.json())
+                        render_li_fun(e,shoppingcar[i].split("?")[1])
+                    }
+                    render_01()
+                    body_check_fun()
+                    change_num_fun(shoppingcar)
+                    go_fun()
+                }
+                a()
+                let render_li_fun=function(e,num){
+                    console.log(e)
+                    $(".body .body_one").innerHTML+=`
+                        <li>
+                            <div class="left">
+                                <input type="checkbox" name="" id="">
+                                <div class="checkbox"></div>
+                            </div>
+                            <a href="#">
+                                <div class="center">
+                                    <img src=${e.data.dataimg} alt="">
+                                    <div class="txt">
+                                        <p>${e.data.dataname+" "+e.data.details}</p>
+                                        <p class="goods_id">${e.data.Id}</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="right">
+                                <div class="num_box">
+                                    <div class="del">-</div>
+                                    <div class="num">${num}</div>
+                                    <div class="add">+</div>
+                                </div>
+                                <p>￥${e.data.price}</p>
+                            </div>
+                        </li>
+                    `
+                }
+            }
+        })
+    }
+    render()
+
+//render01
+    let render_01=function(){
+        let len=$$(".body li").length
+        for(let i=0;i<len;i++){
+            if(!(i%2)){
+                $$(".body li")[i].style.background="white"
+                $$(".body li .num_box>.add")[i].style.background="#eee"
+                $$(".body li .num_box>.num")[i].style.background="#eee"
+                $$(".body li .num_box>.del")[i].style.background="#eee"
+            }
+            else{
+                $$(".body li")[i].style.background="#eee"
+                $$(".body li .num_box>.add")[i].style.background="white"
+                $$(".body li .num_box>.num")[i].style.background="white"
+                $$(".body li .num_box>.del")[i].style.background="white"
+            }
+        }
+    }
+
+//body>checkbox
+    let body_check_fun=function(){
+        let len=$$(".body .checkbox").length
+        for(let i=0;i<len;i++){
+            $$(".body .checkbox")[i].onclick=function(){
+                if($$(".body input[type='checkbox']")[i].getAttribute('checked')){
+                    this.style.background=""
+                    $$(".body input[type='checkbox']")[i].removeAttribute('checked')
+                    //归零
+                    let num
+                    let price
+                    let del_num=function(){
+                        num=parseInt($(".go>span").innerHTML)
+                        num-=parseInt($$(".num_box .num")[i].innerHTML)
+                        $(".go>span").innerHTML=num
+                    }
+                    let del_price=function(){
+                        num=parseInt($$(".num_box .num")[i].innerHTML)
+                        price=parseInt($(".price_all span").innerHTML.slice(1))
+                        price-=num*parseInt($$(".body li .right p")[i].innerHTML.slice(1))
+                        $(".price_all span").innerHTML="￥"+price
+                    }
+                    del_num()
+                    del_price()
+                }
+                else{
+                    this.style.background="red"
+                    $$(".body input[type='checkbox']")[i].setAttribute('checked','checked')
+                    //计算
+                    let num
+                    let price
+                    let add_num=function(){
+                        num=parseInt($(".go>span").innerHTML)
+                        num+=parseInt($$(".num_box .num")[i].innerHTML)
+                        $(".go span").innerHTML=num
+                    }
+                    let add_price=function(){
+                        num=parseInt($$(".num_box .num")[i].innerHTML)
+                        price=parseInt($(".price_all span").innerHTML.slice(1))
+                        price+=num*parseInt($$(".body li .right p")[i].innerHTML.slice(1))
+                        $(".price_all span").innerHTML="￥"+price
+                    }
+                    add_num()
+                    add_price()
+                }
+            }
+        }
+    }
+
+//bottom>checkbox
+    let bottom_check_fun=function(){
+        $(".bottom>.left>.checkbox").onclick=function(){
+            if($(".bottom>.left>input[type='checkbox']").getAttribute('checked')){
+                $(".bottom>.left>.checkbox").style.background=""
+                $(".bottom>.left>input[type='checkbox']").removeAttribute('checked')
+                //归零
+                let len=$$(".body li .left .checkbox").length
+                for(let i=0;i<len;i++){
+                    if($$(".body li .left .checkbox")[i].style.background=="red"){
+                        $$(".body li .left .checkbox")[i].onclick()
+                    }
+                }
+            }
+            else{
+                $(".bottom>.left>.checkbox").style.background="red"
+                $(".bottom>.left>input[type='checkbox']").setAttribute('checked','checked')
+                //全选
+                let len=$$(".body li .left .checkbox").length
+                for(let i=0;i<len;i++){
+                    if(!$$(".body li .left .checkbox")[i].style.background){
+                        $$(".body li .left .checkbox")[i].onclick()
+                    }
+                }
+            }
+        }
+    }
+    bottom_check_fun()
+
+//change_num
+    let change_num_fun=function(shoppingcar){
+        let len=$$(".num_box").length
+        for(let i=0;i<len;i++){
+            $$(".num_box .add")[i].onclick=function(){
+                let now_num
+                now_num=parseInt($$(".num_box .num")[i].innerHTML)
+                now_num++
+                $$(".num_box .num")[i].innerHTML=now_num
+                //num_all price_all
+                if($$(".body li .checkbox")[i].style.background=="red"&&now_num+1){
+                    //num_all
+                    let all_num=parseInt($(".go>span").innerHTML)
+                    all_num++
+                    $(".go span").innerHTML=all_num
+                    //price_all
+                    let all_price=parseInt($(".price_all span").innerHTML.slice(1))
+                    all_price+=parseInt($$(".body li .right p")[i].innerHTML.slice(1))
+                    $(".price_all span").innerHTML="￥"+all_price
+                }
+            }
+            $$(".num_box .del")[i].onclick=function(){
+                let now_num=parseInt($$(".num_box .num")[i].innerHTML)
+                if(now_num)
+                    now_num--
+                else return
+                $$(".num_box .num")[i].innerHTML=now_num
+                //num_all price_all
+                if($$(".body li .checkbox")[i].style.background=="red"&&now_num+1){
+                    //num_all
+                    let all_num=parseInt($(".go>span").innerHTML)
+                    all_num--
+                    $(".go span").innerHTML=all_num
+                    //price_all
+                    let all_price=parseInt($(".price_all span").innerHTML.slice(1))
+                    all_price-=parseInt($$(".body li .right p")[i].innerHTML.slice(1))
+                    $(".price_all span").innerHTML="￥"+all_price
+                }
+            }
+        }
+    }
+
+//go
+    let go_fun=function(){
+        $(".go").onclick=function(){
+            console.log("go")
+            //获取需要清除的商品
+
+            //post,清除
+
+            alert("结算完毕,未完成")
+        }
+    }
+</script>
+</html>

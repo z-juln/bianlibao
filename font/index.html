@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>index</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style-type: none;
+            box-sizing:border-box;
+            text-decoration: none;
+        }
+        .shang{
+            font-size: 0px;
+        }
+        .banner{
+            overflow: hidden;
+        }
+        .banner ul {
+            width: 500%;
+            height: 156px;
+        }
+        .banner ul li{
+            width: 20%;
+            display: inline-block;
+        }
+        .banner ul li img{
+            width: 100%;
+            overflow: hidden;
+        }
+        .banner ul
+        {
+            animation: aaa 10s infinite;
+        }
+        @keyframes aaa{
+            12.5%{margin-left: 0}
+            25%{margin-left: -100%}
+            37.5%{margin-left: -100%}
+            50%{margin-left: -200%}
+            62.5%{margin-left: -200%}
+            75%{margin-left: -300%}
+            87.5%{margin-left: -300%}
+            100%{margin-left: -400%}
+            100%{margin-left: -400%}
+        }
+        .content ul{
+            height: 180px;
+            width: 100%;
+        }
+        .content ul li{
+            width: 25%;
+            height: 60px;
+            display: inline-block;
+        }
+        .content ul li img{
+            margin-left: 20px;
+            margin-top: 5px;
+            height: 60px;
+        }
+        .content ul li p{
+            margin-top: 5px;
+            margin-left: 19px;
+            font-size: 16px;
+            color: grey;
+        }
+        .horn{
+            width: 100%;
+            height: 50px;
+            position: absolute;
+        }
+        .horn ul{
+            height: 0px;
+        }
+        .horn ul li span{
+            font-size: 15px;
+        }
+        .horn ul li:nth-child(1){
+            width: 20px;
+            height: 20px;
+        }
+        .horn ul li i{
+            font-size: 30px;
+            position: relative;
+            left: 7px;
+            top: 11px;
+        }
+        .horn ul li:nth-child(2) {
+            position: relative;
+            left: 45px;
+            top: -15px;
+            height: 40px;
+            width: 40px;
+            font-weight: 600;
+        }
+        .horn ul li:nth-child(2) .horn ul span:nth-child(1)
+        {
+            color: brown;
+        }
+        .horn ul li:nth-child(3){
+            width: 0px;
+            display: inline-block;
+        }
+        .horn ul li:nth-child(3) span
+        {
+            font-size: 12px;
+            width: 230px;
+            display: inline-block;
+            position: relative;
+            left: 90px;
+            top: -76px;
+            line-height: 25px;
+            margin-top: -5px;
+        }
+        .horn ul li:nth-child(4){
+            width: 0px;
+            display: inline-block;
+        }
+        .horn ul li:nth-child(4) span
+        {
+            position: relative;
+            left: 349px;
+            top: -76px;
+        }
+        .horn ul li:nth-child(4) span::before{
+            content: "|";
+            color: gray;
+            font-size: 15px;
+            position: relative;
+            right: 10px;
+            top: 28px;
+        }
+        .Recommend{
+            width: 100%;
+            height: 330px;
+            background: #f4f4f4;
+            position: relative;
+            top: 55px;
+            padding-top: 15px;
+
+        }
+        .Recommend li{
+            width: 50%;
+            display: inline-block;
+        }
+        .Recommend img{
+            width: 100%;
+
+        }
+        .pic5,.pic6
+        {
+            margin-top: 15px;
+        }
+        input{
+            border:none;
+        }
+        .header{
+            color:white;
+            height:50px;
+            background: red;
+            width:100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .header>i{
+            font-size: 23px;
+            height:50px;
+            line-height: 50px;
+        }
+        .search{
+            transform: translateY(10px);
+            background: white;
+            display: flex;
+            justify-content: center;
+            width:250px;
+            height:30px;
+            border:1px solid black;
+            border-radius: 15px;
+        }
+        .search>i{
+            transform: translateX(-10px);
+            color:black;
+            line-height: 28px;
+        }
+        .search>input{
+            width:200px;
+        }
+
+        .end{
+            background: white;
+            text-align: center;
+            border-top: 1px solid black;
+            width:100%;
+            position: fixed;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .end>p{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .act{
+            color:red;
+        }
+
+        .body{
+            position: relative;
+            width:100%;
+            height:calc(100% - 100px);
+            overflow: scroll;
+        }
+        .body_two{
+            overflow: hidden;
+            width:100%;
+        }
+        .body_three{
+            display: flex;
+            width: 500%;
+        }
+        .body_three>li{
+            width:20%;
+        }
+
+        /* ------------2------------- */
+        
+        .body_three>li:nth-child(2){
+            position: relative;
+        }
+        .sortlist{
+            width:120px;
+            background: white;
+        }
+        .sortlist>li{
+            text-align: center;
+            height:70px;
+            line-height: 70px;
+        }
+        .sortcont{
+            position: absolute;
+            right:0;
+            top:0;
+            display: flex;
+            /* //; */
+            flex-direction: column;
+            /* flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around; */
+            margin-left: 120px;
+            width:calc(100% - 120px);
+            background: #eee;
+
+        }
+        .act2{
+            border-left:3px solid red;
+            color:red;
+            background: #eee;
+        }
+        .commend>div{
+            text-align: center;
+        }
+        .commend>div>img{
+            display: inline-block;
+            width:80px;
+            height:80px;
+            background: red;
+        }
+        .commend>div>p{
+            width:100%;
+            height:20px;
+            line-height: 20px;
+            font-size: 16px;
+            transform: translateY(-3px);
+        }
+        .other{
+            margin-top:8px;
+            width:100%;
+            height:8.5%;
+            background: white;
+            display: flex;
+            position: relative;
+        }
+        #other_img{
+            height:100%;
+        }
+        .other_name{
+            text-indent: 5px;
+        }
+        .other_price{
+            position: absolute;
+            right:5px;
+            bottom:5px;
+        }
+        .other_bottom{
+            position: absolute;
+            bottom:0;
+            width:100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .other_bottom>div{
+            background: white;
+        }
+        .pr{
+            align-items: flex-start;
+        }
+        .next{
+            align-items: flex-end;
+        }
+        /* -------------------------------- */
+        .search_win{
+            position: fixed;
+            top: 50px;
+            left:0;
+            width: 100%;
+            height:calc(100% - 100px);
+            background: white;
+        }
+        .hotsearch{
+            transform: translateY(8px);
+        }
+        .hotsearch::after{
+            content: "";
+            display: block;
+            width:100%;
+            height: 8px;
+        }
+        .hottxt{
+            text-indent: 8px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .hotsearch>input{
+            margin-left: 8px;
+            margin-top: 5px;
+            height:22px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .history_search::before{
+            margin-top: 8px;
+            content: "";
+            width: 100%;
+            height:8px;
+            display: block;
+            background: #ddd;
+        }
+        .history_search>.title{
+            font-size: 20px;
+            font-weight: bold;
+            text-indent: 8px;
+            line-height: 40px;
+            border-bottom: 1px solid #ddd;
+        }
+        .history_search>.txt{
+            text-indent: 8px;
+            line-height: 40px;
+            border-bottom: 1px solid #ddd;
+        }
+        .clear{
+            margin: auto;
+            margin-top:50px;
+            text-align: center;
+            border-radius: 0.5rem;
+            border:1px solid #888;
+            width:8rem;
+            height:2rem;
+            line-height: 2rem;
+        }
+        /* -------------------------------- */
+        .search_list_body::after{content: "";display: block;width:100%;height:8px;background: #ddd;}
+        .search_list{height:100px;width:100%;display: flex;justify-content: space-between;}
+        .search_list>.txt{
+            width:calc(100% - 100px);
+            height:100px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .search_list img{width:100px;height:100px;}
+        .search_list p{font-size: 20px;font-weight: bold;text-indent: 8px;}
+        .search_list span{display: inline-block;font-size: 18px;text-indent: 8px;}
+    </style>
+</head>
+<body>
+    <script>
+        document.body.style.width=`${window.innerWidth}px`
+        document.body.style.height=`${window.innerHeight}px`
+    </script>
+
+    <div class="header">
+        <i class="fa fa-qrcode" aria-hidden="true"></i>
+        <div class="search">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" name="" id="" placeholder="百草味零食">
+        </div>
+        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+    </div>
+<!-- -------------------------- -->
+    <div class="body">
+        <div class="body_two">
+            <ul class="body_three">
+                <li style="background: white;">
+                    <div class="shang">
+                        <div class="banner">
+                            <!-- 轮播图 -->
+                            <ul>
+                                <a href="#"><li><img src="./images/banner2.jpg" alt=""></li></a>
+                                <a href="#"><li><img src="./images/banner3.jpg" alt=""></li></a>
+                                <a href="#"><li><img src="./images/banner2.jpg" alt=""></li></a>
+                                <a href="#"><li><img src="./images/banner3.jpg" alt=""></li></a>
+                                <a href="#"><li><img src="./images/banner2.jpg" alt=""></li></a>
+                
+                            </ul>
+                        </div>
+                        <div class="content">
+                            <ul>
+                                <!-- 分类btn -->
+                                <a href="#"><li>
+                                    <i> 
+                                        <img src="./images/首页btn1.png" alt="">
+                                    </i>
+                                    <p>限时抢购</p>
+                                </li></a>
+                                <a href="#"> <li>
+                                    <i>
+                                        <img src="./images/首页btn2.png" alt="">
+                                    </i>
+                                    <p>今日上新</p>
+                                </li></a>
+                                <a href="#"><li>
+                                        <i>
+                                                <img src="./images/首页btn3.png" alt="">
+                                            </i>
+                                    <p>好货排行</p>
+                                </li></a>
+                                <a href="#"> <li>
+                                        <i>
+                                                <img src="./images/首页btn4.png" alt="">
+                                            </i>
+                                    <p>出行必备</p>
+                                </li></a>
+                                <a href="#"> <li>
+                                        <i>
+                                                <img src="./images/首页btn5.png" alt="">
+                                            </i>
+                                    <p>家居护理</p>
+                                </li></a>
+                                <a href="#"><li>
+                                        <i>
+                                                <img src="./images/首页btn6.png" alt="">
+                                            </i>
+                                    <p>五金家电</p>
+                                </li></a>
+                                <a href="#"><li>
+                                        <i>
+                                                <img src="./images/首页btn7.png" alt="">
+                                            </i>
+                                    <p>清洁洗护</p>
+                                </li></a>
+                                <a href="#"><li>
+                                        <i>
+                                                <img src="./images/首页btn8.png" alt="">
+                                            </i>
+                                    <p>酒水饮料</p>
+                                </li></a>
+                            </ul>
+                            
+                            </div>
+                            <!-- 小喇叭公告栏 -->
+                            <div class="horn">
+                                    <ul>
+                                        <li>
+                                            <i class="fa fa-bullhorn"></i>
+                                        </li>
+                                        <li>
+                                            <span>最新</span>
+                                            <span>公告</span>
+                                        </li>
+                                        <li>
+                                            <span>畅饮尝新季，满99减20！</span>
+                                            <span>初夏奶货据上火。有机奶粉馆，两件八折！</span>
+                                        </li>
+                                        <li><span>更多</span></li>
+                                    </ul>
+                        </div>
+                        <div class="Recommend">
+                            <ul>
+                                <li><img src="./images/标签1.png" class="pic1" alt=""></li>
+                                <li><img src="./images/标签2.png" class="pic2" alt=""></li>
+                                <li><img src="./images/广告2.png" class="pic3" alt=""></li>
+                                <li><img src="./images/广告1.png" class="pic4" alt=""></li>
+                                <li><img src="./images/广告4.png" class="pic5" alt=""></li>
+                                <li><img src="./images/广告3.png" class="pic6" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <ul class="sortlist">
+                        <li class="act2">为您推荐</li>
+                        <li>酒水饮料</li>
+                        <li>食品零食</li>
+                        <li>家居护理</li>
+                        <li>出行必备</li>
+                        <li>清洁洗护</li>
+                        <li>粮油调味</li>
+                    </ul>
+                    <div class="sortcont commend" visibility="visble">
+
+                    </div>
+                </li>
+                <li style="background: white;">
+                    
+                </li>
+                <li style="background: white;">
+                    
+                </li>
+                <li style="background: white;">
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+<!-- -------------------------- -->
+    <div class="search_win" style="z-index: -1">
+        <div class="hotsearch">
+            <p class="hottxt">热搜</p>
+            <input type="button" value="222">
+            <input type="button" value="555">
+            <input type="button" value="777">
+            <input type="button" value="888">
+            <input type="button" value="999">
+        </div>
+        <div class="history_search">
+        </div>
+        <div class="clear">
+            <i></i>
+            <span>清空历史记录</span>
+        </div>
+    </div>    
+<!-- -------------------------- -->
+<!-- --------------------------- -->
+    <div class="end">
+        <p class="index">
+            <i class="fa fa-indent" aria-hidden="true"></i>
+            <span>主页</span>
+        </p>
+        <p class="sort">
+            <i class="fa fa-window-restore" aria-hidden="true"></i>
+            <span>分类</span>
+        </p>
+        <p class="find">
+            <i class="fa fa-hand-o-down" aria-hidden="true"></i>
+            <span>发现</span>
+        </p>
+        <p class="gwc">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span>购物车</span>
+        </p>
+        <p class="mine">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span>我的</span>
+        </p>
+    </div>
+</body>
+<script>
+    let getusername=function(){
+        let username
+        let str=location.search.split("?")[1]
+        if(str.includes("&")){
+            username=str.split("&")[0].split("=")[1]
+        }
+        else{
+            username=str.split("=")[1]
+        }
+        return username
+    }
+    let username=getusername()
+    console.log(username)
+    let $=e=>document.querySelector(e)
+    let $$=e=>document.querySelectorAll(e)
+    let nolist_html
+    let show_search_list=0
+    let show_search=0
+    let search_note
+    if(window.localStorage["search_note"]){
+        search_note=window.localStorage["search_note"].split(",")
+        console.log(search_note)
+    }
+    else{
+        search_note=[]
+    }
+    let search_input_index=0
+    let search_note_fun=function(search_note){
+        let str=search_note.join()
+        window.localStorage.setItem("search_note",`${str}`)
+    }
+    search_note_fun(search_note)
+    $(".header input").onkeypress=function(e){
+        if(e.keyCode==13){
+            search_note.push(this.value)
+            search_note_fun(search_note)
+            show_search_list=1
+            ll()
+            search_fun(this.value)
+            search_input_index++
+        }
+    }
+    let render_history_list=function(){
+        if(!window.localStorage["search_note"]&&$(".history_search")){    
+            $(".history_search").innerHTML=`
+                <div class="title">历史搜索</div>
+                <div class="txt">空</div>
+            `
+        }
+        else if($(".history_search")){
+            $(".history_search").innerHTML=`
+                <div class="title">历史搜索</div>
+            `
+            //search_note转localstorage
+            search_note.forEach((e,i)=>{
+                $(".history_search").innerHTML+=`
+                    <div class="txt">${e}</div>
+                `
+                if(i==4) return
+            })
+            for(let i=1;i<$(".history_search").children.length;i++){
+                $(".history_search").children[i].onclick=function(){
+                    console.log("ojbk")
+                    $(".header input").value=$(".history_search").children[i].value                    
+                    show_search_list=1
+                    search_fun(this.value)
+                    search_input_index++
+                }
+            }
+            //
+        }
+        requestAnimationFrame(render_history_list)
+    }
+    render_history_list()
+    let clear_fun=function(){
+        if($(".clear")){
+            $(".clear").onclick=function(){
+                search_note=[]
+                window.localStorage["search_note"]=""
+            }
+        }
+        requestAnimationFrame(clear_fun)
+    }
+    clear_fun()
+    let ll=function(){
+        if(show_search_list==0){
+            ///////////////////////////////////
+            $(".search_win").innerHTML=nolist_html
+            //////////////////////////////////
+            $(".header input").value=""
+        }
+        requestAnimationFrame(ll)
+    }
+    $(".header input").onclick=function(){
+        console.log("显示")
+        show_search=1
+        let render=function(){
+            if(show_search==1){
+                $(".search_win").style.zIndex="100"
+            }
+            else{
+                $(".search_win").style.zIndex="-1"
+            }
+            requestAnimationFrame(render)
+        }
+        render()
+    }
+    $(".commend").style.height=`${$("body").offsetHeight-100}px`
+    $(".sortlist").style.height=`${$("body").offsetHeight-100}px`
+    let a=function(){
+        if($(".aa")){
+            $(".aa").style.width=`${$(".aa").offsetHeight}px`
+        }
+        if($(".sortlist>li:nth-child(1)").className.includes("act2")){
+            $(".sortcont").style.flexDirection="row"
+            $(".sortcont").style.flexWrap="wrap"
+            $(".sortcont").style.justifyContent="space-around"
+            $(".sortcont").style.alignContent="space-around"
+
+        }
+        else{
+            $(".sortcont").style.flexDirection="column"
+            $(".sortcont").style.flexWrap="no-wrap"
+            $(".sortcont").style.justifyContent=""
+            $(".sortcont").style.alignContent=""
+        }
+        requestAnimationFrame(a)
+    }
+    a()
+    $(".end").style.top=`${$("body").style.height-$(".body").offsetHeight-50}px`
+
+    let changeclass=function(node){
+        if(node.className.includes(" ")){
+            node.className=node.className.split(" ")[0]
+        }
+        else{
+            node.className+=" act"
+        }
+    }
+    changeclass($(".index"))
+    console.log($(".end").children)
+    for(let i=0;i<$(".end").children.length;i++){
+        $(".end").children[i].onclick=function(){
+            show_search=0
+            show_search_list=0
+            if($(".end").children[i].className.includes("act")){
+                return
+            }
+            else{
+                for(let i=0;i<$(".end").children.length;i++){
+                    if($(".end").children[i].className.includes("act")){
+                        changeclass($(".end").children[i])
+                    }
+                }
+                changeclass($(".end").children[i])
+                $(".body_three").style.transform=`translateX(${-1*i*document.body.offsetWidth}px)`
+            }
+        }
+    }
+
+    let recommend_data=[]
+    fetch(`http://127.0.0.1:5000/recommend`)
+    .then(e=>e.json())
+    .then(e=>{
+        if(e.code==200){
+            console.log(e.data)
+            recommend_data=e.data
+            //
+
+            $(".sortlist>li:nth-child(1)").onclick()
+            for(let i=1;i<$(".hotsearch").children.length;i++){
+                $(".hotsearch").children[i].value=e.data[i].dataname
+                $(".hotsearch").children[i].style.width=`${e.data[i].dataname.length+2}rem`
+                $(".hotsearch").children[i].onclick=function(){    
+                    let strIndex=location.href.lastIndexOf("/")
+                    let str=location.href.slice(0,strIndex)
+                    location.replace(str+"/goods.html?username="+username+"&goods="+this.value)
+                }
+            }
+        }
+        else{
+            console.log(e.code)
+            iscont=0
+        }
+    })
+
+    $(".sortlist>li:nth-child(1)").onclick=function(){
+        for(let i=0;i<7;i++){
+            $(".sortlist").children[i].className=""
+        }
+        this.className="act2"
+        //add
+        $(".sortcont").innerHTML=``
+        for(let i=0;i<12;i++){
+            $(".sortcont").innerHTML+=`
+                <div>
+                    <img src=${recommend_data[i].dataimg} alt="">
+                    <p>${recommend_data[i].dataname}</p>
+                </div>
+            `
+        }
+    }
+    for(let i=1;i<7;i++){
+        $(".sortlist").children[i].onclick=function(){
+            for(let i=0;i<7;i++){
+                $(".sortlist").children[i].className=""
+            }
+            this.className="act2"
+            //add
+            $(".sortcont").innerHTML=``
+                let a=function(){
+                    if($(".pr")){
+                        $(".pr").onclick=function(){
+                            localStorage["page"]=parseInt(localStorage["page"])-1
+                            fetch_sort(localStorage["page"])
+                        }
+                    }
+                    if($(".next")){
+                        $(".next").onclick=function(){
+                            console.log(localStorage["page"])
+                            localStorage["page"]=parseInt(localStorage["page"])+1
+                            console.log(localStorage["page"])
+                            fetch_sort(localStorage["page"])
+                        }
+                    }
+                    requestAnimationFrame(a)
+                }
+            let fetch_sort=function(page){
+                let arr=["win","nibble","furniture","port","clean","seasoning"]
+                console.log(arr[i-1])
+                fetch(`http://127.0.0.1:5000/data/sort/${arr[i-1]}?page=${page}`)
+                .then(e=>e.json())
+                .then(e=>{
+                    console.log(e)
+                    $(".sortcont").innerHTML=``
+                    //render
+                    for(let i=0;i<e.row;i++){
+                        $(".sortcont").innerHTML+=`
+                            <div class="other">
+                                <img src=${e.data[i].dataimg} alt="" id="other_img" class="aa>
+                                <div class="other_cont">
+                                    <p class="other_name">${e.data[i].dataname}</p>
+                                    <p class="other_price">￥${e.data[i].price}</p>
+                                </div>
+                            </div>
+                        `
+                    }
+                    //
+                    if(e.message=="最后一页"&&page==1){
+                        $(".sortcont").innerHTML+=`
+                            <p style="margin:auto">${e.message}</p>
+                        `
+                    }
+                    else if(e.message=="最后一页"){
+                        $(".sortcont").innerHTML+=`
+                            <div class="other_bottom">
+                                <div class="pr">上一页</div>
+                            </div>
+                        `
+                        $(".sortcont").innerHTML+=`
+                            <p style="margin:auto">${e.message}</p>
+                        `
+                    }
+                    else if(page==1){
+                        $(".sortcont").innerHTML+=`
+                            <div class="other_bottom">
+                                <div class="pr"></div>
+                                <div class="next">下一页</div>
+                            </div>
+                        `
+                        $(".sortcont").innerHTML+=`
+                            <p style="margin:auto">${e.message}</p>
+                        `
+                    }
+                    else{
+                        $(".sortcont").innerHTML+=`
+                            <div class="other_bottom">
+                                <div class="pr">上一页</div>
+                                <div class="next">下一页</div>
+                            </div>
+                        `
+                    }
+                })
+            }
+            let page=1
+            fetch_sort(page)
+            a()
+        }
+
+    }
+</script>
+<script>
+    let search_fun=function(value){
+        if(search_input_index==0)
+            nolist_html=$(".search_win").innerHTML
+        let page=1
+        $(".search_win").innerHTML=``
+        //判断修改isget
+        fetch(`http://127.0.0.1:5000/search?str=${value}&page=1`)
+        .then(e=>e.json())
+        .then(e=>{
+            console.log(e.dataname)
+            if(e.code!=200){
+                $(".search_win").innerHTML=`
+                    <p style="margin:auto;width:8rem;margin-top:50px">亲，搜索不到了呦</p>
+                `
+            }
+            else{
+                //isget==1
+                $(".search_win").innerHTML+=`
+                    <div class="search_win_two" style="width:100%;height:${$("body").offsetHeight-100}px;overflow:scroll;">
+                        <div class="search_win_three"><div>
+                    </div>
+                `
+                for(let i=0;i<e.data.length;i++){
+                    let strIndex=location.href.lastIndexOf("/")
+                    let str=location.href.slice(0,strIndex)
+                    $(".search_win_three").innerHTML+=`
+                        <div class="search_list_body">
+                            <a href=${str+"/goods.html?"+"username="+username+"&goods="+e.data[i].dataname}>
+                                <ul class="search_list">
+                                    <img src=${e.data[i].dataimg} alt="">
+                                    <div class="txt">
+                                        <p>${e.data[i].dataname+"  "+e.data[i].details}</p>
+                                        <span>${e.data[i].price}</span>
+                                    </div>
+                                </ul>
+                            </a>
+                        </div>
+                    `
+                }
+                $(".search_win_three").innerHTML+=`
+                    <p style="margin:auto;width:8rem;margin-top:50px;margin-bottom:50px;">亲，搜索不到了呦</p>
+                `
+            }
+        })
+
+        
+    }
+    $(".gwc").onclick=function(){
+        let strIndex=location.href.lastIndexOf("/")
+        let str=location.href.slice(0,strIndex)
+        location.replace(str+"/shoppingcar.html?"+"username="+username)
+    }
+    $(".end .mine").onclick=function(){
+        let strIndex=location.href.lastIndexOf("/")
+        let str=location.href.slice(0,strIndex)
+        location.replace(str+"/Personal Center.html?"+"username="+username)
+    }
+</script>
+<script>
+    function time_8_8(){
+        if($(".commend>div:nth-child(1)>p")){
+            for(let i=0;i<$$(".commend>div>p").length;i++){
+                $$(".commend>div>p")[i].parentNode.onclick=function(){   
+                    let strIndex=location.href.lastIndexOf("/")
+                    let str=location.href.slice(0,strIndex)
+                    location.replace(str+"/goods.html?username="+username+"&goods="+this.querySelector("p").innerHTML)
+                }
+            }
+        }
+        if($(".commend>.other")){
+            for(let i=0;i<$$(".commend>.other").length;i++){
+                $$(".commend>.other")[i].onclick=function(){   
+                    let strIndex=location.href.lastIndexOf("/")
+                    let str=location.href.slice(0,strIndex)
+                    location.replace(str+"/goods.html?username="+username+"&goods="+this.querySelector("p").innerHTML)
+                }
+            }
+        }
+
+        requestAnimationFrame(time_8_8)
+    }
+    time_8_8()
+</script>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mine</title>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        *{margin: 0px;padding: 0px;list-style: none;}
+        
+        .shang_mine{width:100%;height:calc(100% - 100px);}
+        .shang_header{width:100%;height:35%;background: red;}
+        .shang_header .top{width:100%;height:50px;position: relative;}
+        .shang_header .top i:nth-child(1){display: block;color: #ddd;position: absolute;left:0;top:0;font-size: 30px;transform: translate(100%,25%);}
+        .shang_header .top i:nth-child(2){display: block;color: #ddd;position: absolute;right:0;top:0;font-size: 25px;transform: translate(-100%,50%);}
+
+        .avatar_box{width:100%;height:40%;}
+        .avatar_box .avatar_img{width:100%;height:80%;text-align: center;position: relative;}
+        .avatar_box .avatar_img img{display: inline-block;border-radius: 50%;height:100%;}
+        .avatar_box .username{width: 100%;height:20%;text-align: center;transform: translateY(50%);color:#ddd;}
+        
+        .avatar_box input[type='file']{display: block;border-radius: 50%;height:100%;position: absolute;top:0;margin: auto;opacity: 0;font-size: 0;}
+
+        .header_details{width: 100%;height:calc(60% - 50px);display: flex;justify-content: space-between;align-items: flex-end;}
+        .header_details li{width:32%;height:70%;background: brown;color:#ddd;display: flex;flex-direction: column;justify-content: space-around;}
+        .header_details li p{text-align: center;}
+
+        .List li{height: 55px;width: 100%;}
+        .List ul:nth-child(1) li img{margin-left: 10px;margin-top: 10px;}
+        .List ul:nth-child(1) li h1 {
+            width: 80px;
+            font-size: 18px;
+            color:#656565;
+            padding-left: 10px;
+            display: inline-block;
+            margin-bottom: 10px;
+            position: relative;
+            left: 10px;
+            top: -7px;
+            font-weight: 100;
+        }
+        .List ul li p{
+            font-size: 18px;
+            display: inline;
+            position: relative;
+            left: 220px;
+            left:calc(100% - 170px);
+            top: -7px;
+        }
+        .List ul li h2{
+            height: 1px;
+            width: 90%;
+            position: relative;
+            left: 5%;
+            top: -15%;
+            background: #d2d2d2;
+        }
+        .List ul:nth-child(2) li{
+            height: 50px;
+            width: 25%;
+            display: inline-block
+        }
+        .List ul:nth-child(2) li img{
+            margin-left: 30px;
+            margin-top: 3px;
+            display: inline-block
+        }
+        .List ul:nth-child(2) h3{
+            text-align: center;
+            line-height: 14px;
+            font-size: 14px;
+            margin-top: 5px;
+            font-weight: 150;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.body.style.height=`${window.innerHeight}px`    
+    </script>
+<div class="shang_mine">
+    <div class="shang_header">
+        <!-- // -->
+        <li class="top">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <i class="fa fa-cog" aria-hidden="true"></i>
+        </li>
+        <div class="avatar_box">
+            <div class="avatar_img">
+                <img src="http://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/472309f7905298229a6d4025ddca7bcb0b46d4fe.jpg">
+                <input type="file">
+            </div>
+            <p class="username">username</p>
+        </div>
+        <div class="header_details">
+            <li>
+                <p>这是我的积分</p>
+                <p>我的积分</p>
+            </li>
+            <li>
+                <p>这是为你推荐</p>
+                <p>为你推荐</p>
+            </li>
+            <li>
+                <p>这是浏览记录</p>
+                <p>浏览记录</p>
+            </li>
+        </div>
+            
+        <!-- // -->
+    </div>
+    <div class="List">
+        <ul>
+            <li>
+                <img src="./images/设置btn1.png" width="25px" alt="">
+                <h1>我的订单</h1>
+                <p><i class="fa fa-angle-right" aria-hidden="true"></i></p>
+                <h2></h2>
+            </li>
+            <ul style="display: flex;">
+                <li>
+                    <img src="./images/设置btn2.png" width="35px"  alt="">
+                    <h3>待收货</h3>
+                </li>
+                <li>
+                    <img src="./images/设置3.png"  width="35px" alt="">
+                    <h3>待付款</h3>
+                </li>
+                <li>
+                    <img src="./images/设置btn4.png" width="35px"  alt="">
+                    <h3>待发货</h3>
+                </li>
+                <li>
+                    <img src="./images/设置btn5..png"  width="35px" alt="">
+                    <h3>退货单</h3>
+                </li>
+            </ul>
+            <li>
+                <img src="./images/设置btn6.png" width="25px" alt="">
+                <h1>叫货订单</h1>
+                <p><i class="fa fa-angle-right" aria-hidden="true"></i></p>
+                <h2></h2>
+            </li>
+            <li>
+                <img src="./images/设置btn7.png" width="25px" alt="">
+                <h1>我的收藏</h1>
+                <p><i class="fa fa-angle-right" aria-hidden="true"></i></p>
+                <h2></h2>
+            </li>
+            <li>
+                <img src="./images/设置btn8.png"  width="25px" alt="">
+                <h1>优惠券</h1>
+                <p><i class="fa fa-angle-right" aria-hidden="true"></i></p>
+                <h2></h2>
+            </li>
+            <li>
+                <img src="./images/设置btn9.png" width="25px" alt="">
+                <h1>收货地址</h1>
+                <p><i class="fa fa-angle-right" aria-hidden="true"></i></p>
+                <h2></h2>
+            </li>
+            <li>
+                <img src="./images/设置btn10.png" width="25px" alt="">
+                <h1>服务中心</h1>
+                <p><i class="fa fa-angle-right" aria-hidden="true"></i></p>
+                <h2></h2>
+            </li>
+        </ul>
+    </div>
+</div>
+    <script src="./Personal Center.js"></script>
+</body>
+</html>

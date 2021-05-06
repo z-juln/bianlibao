@@ -1,0 +1,89 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-size: 0px;
+    background: #e83632;
+    list-style: none;
+}
+.Logo{
+    height: 230px;
+    width: 100%;
+    display: inline-block;
+}
+.Logo img{
+    height: 150px;
+    width: 150px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+}
+.Login
+{
+    position: absolute;
+    height: 100px;
+    width: 60%;
+    margin-left: 18%;
+}
+.userId,.passcode,.passcode_again{
+    height: 50%;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 10px;
+    font-size: 16px;
+    padding-left: 30px
+}
+
+.Login h1{
+    position: relative;
+    font-size: 25px;
+    left: 7px;
+    top: -148px;
+    background: #ffffff;
+}
+.Login h2{
+    position: relative;
+    font-size: 25px;
+    left: -12px;
+    top: -94px;
+    background: #ffffff;
+}
+.Login h3{
+    font-size: 25px;
+    position: relative;
+    left: -28px;
+    top: -38px;
+    background: #ffffff;
+}
+.body h4{
+    font-size: 25px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    color: #ffffff;
+}
+a{ 
+    text-decoration:none; 
+    color:#333; 
+    } 
+.loginbtn{
+    height: 60%;
+    width: 150px;
+    background:#ac1a16;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 50px;
+    color: #ffffff;
+    font-size: 27px;
+    position: relative;
+    top: -5px;
+    margin-left: 50%;
+    transform: translateX(-40%);
+}
+
+
+.login_bottom{
+    width: 100%;
+    position: relative;
+    bottom: -242px;
+}
